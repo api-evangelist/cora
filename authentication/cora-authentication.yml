@@ -1,0 +1,42 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.cora.com.br/docs/client-credentials-int-direta
+docs: https://developers.cora.com.br/docs/client-credentials-int-direta
+summary:
+  types:
+  - oauth2
+  - mutualTLS
+  oauth2_flows:
+  - clientCredentials
+  notes: >-
+    Cora offers two integration modalities. Direct Integration (Integração Direta)
+    requires mutual TLS: every request must present an X.509 client certificate and
+    private key issued by Cora, in addition to an OAuth2 client-credentials bearer
+    token obtained from the /token endpoint. Cora Partnership (Parceria Cora) uses
+    OAuth2 client-credentials with a client secret (no client certificate). Credentials
+    are provisioned through the Cora app or Cora Web, not self-service.
+schemes:
+- name: mutualTLS
+  type: mutualTLS
+  description: >-
+    Client certificate (certificate.pem) + private key (private-key.key) presented
+    on every request for the Direct Integration modality (matls-clients hosts).
+  modality: direct-integration
+  sources:
+  - docs:developers.cora.com.br/docs/client-credentials-int-direta
+- name: OAuth2ClientCredentials
+  type: oauth2
+  flow: clientCredentials
+  token_url_stage: https://matls-clients.api.stage.cora.com.br/token
+  token_url_production: https://matls-clients.api.cora.com.br/token
+  grant_type: client_credentials
+  token_type: Bearer
+  request_content_type: application/x-www-form-urlencoded
+  parameters:
+  - client_id
+  description: >-
+    POST grant_type=client_credentials&client_id=<client_id> to /token (presenting
+    the client certificate + key for Direct Integration) to receive a Bearer access
+    token used in the Authorization header of subsequent API calls.
+  sources:
+  - docs:developers.cora.com.br/docs/client-credentials-int-direta
