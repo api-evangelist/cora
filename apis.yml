@@ -1,8 +1,27 @@
 aid: cora
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cora.png
 name: Cora
-description: 'Cora is a company surfaced as a portfolio company of qed-investors, ribbit-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: banking. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'Cora is a Brazilian digital bank (conta PJ) for small and medium businesses,
+  offering fee-free business checking, Pix, boletos, transfers, payment initiation and
+  financial management. Its developer platform exposes REST APIs for registered boleto
+  and carnê issuance, Pix QR code generation, account data, balance and statement queries,
+  payment and transfer initiation (including DARF and GPS tax payments), webhook
+  notifications, and municipal service invoice (NFS-e) issuance. Cora offers two
+  integration modalities — Direct Integration (mutual-TLS certificate plus OAuth2
+  client-credentials) and Cora Partnership — with a Stage sandbox for testing. Backed
+  by QED Investors and Ribbit Capital.'
 url: https://raw.githubusercontent.com/api-evangelist/cora/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,11 +32,33 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Banking
-apis: []
+- Brazil
+- Payments
+- Pix
+- Boleto
+- Invoicing
+- SMB
+- Fintech
+- Banking-as-a-Service
+apis:
+- name: Cora API
+  description: 'Cora''s transactional banking API for Direct Integration: registered
+    boleto and carnê (installment) issuance, Pix QR codes, account data, balance and
+    statement queries, payment and transfer initiation (DARF/GPS), webhook notification
+    endpoints, and NFS-e municipal service invoicing. Authenticated with mutual TLS
+    (client certificate + private key) and OAuth2 client-credentials bearer tokens.'
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Banking
+  - Payments
+  - Pix
+  - Boleto
+  - Invoicing
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +67,50 @@ maintainers:
 common:
 - type: Website
   url: https://www.cora.com.br/
+- type: DeveloperPortal
+  url: https://developers.cora.com.br/
+- type: Documentation
+  url: https://developers.cora.com.br/docs/instrucoes-iniciais
+- type: APIReference
+  url: https://developers.cora.com.br/reference
+- type: GettingStarted
+  url: https://developers.cora.com.br/docs/instrucoes-iniciais
+- type: Authentication
+  url: authentication/cora-authentication.yml
+- type: ChangeLog
+  url: https://developers.cora.com.br/changelog/welcome-to-cora-api
+- type: Blog
+  url: https://www.cora.com.br/blog/
+- type: Support
+  url: https://meajuda.cora.com.br/
+- type: Pricing
+  url: https://www.cora.com.br/integracoes/
+- type: TermsOfService
+  url: https://www.cora.com.br/termos-e-condicoes-de-apis/
+- type: PrivacyPolicy
+  url: https://www.cora.com.br/politica-de-privacidade/
+- type: Postman
+  url: https://www.postman.com/corabank/cora-s-public-workspace/documentation/ppi1okk/api-cora
+- type: LLMsTxt
+  url: llms/cora-llms.txt
+- type: Sandbox
+  url: sandbox/cora-sandbox.yml
+- type: Conventions
+  url: conventions/cora-conventions.yml
+- type: Idempotency
+  url: conventions/cora-conventions.yml
+- type: Webhooks
+  url: asyncapi/cora-webhooks.yml
+- type: Lifecycle
+  url: lifecycle/cora-lifecycle.yml
+- type: ChangeLog
+  url: changelog/cora-changelog.yml
+- type: Conformance
+  url: conformance/cora-conformance.yml
+- type: DomainSecurity
+  url: security/cora-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

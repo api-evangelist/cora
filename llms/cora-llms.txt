@@ -1,0 +1,51 @@
+# Cora API Documentation
+
+> Documentation for Cora API
+
+## Guides
+- [Instruções iniciais](https://developers.cora.com.br/docs/instrucoes-iniciais.md): Saiba como começar a trabalhar com as nossas APIs
+- [Modalidade Parceria Cora](https://developers.cora.com.br/docs/parceria-cora.md)
+- [Modalidade Integração Direta](https://developers.cora.com.br/docs/integracao-direta.md)
+- [Client Credentials & Client ID](https://developers.cora.com.br/docs/client-credentials-int-direta.md): Autenticação direta que utiliza apenas client ID, private key e certificado
+- [Utilização das APIs](https://developers.cora.com.br/docs/utilização-das-apis.md): Entenda mais sobre a utilização de nossas APIs na modalidade de Integração Direta
+
+## API Reference
+- [Pagar boleto em stage ](https://developers.cora.com.br/reference/pagar-boleto-em-stage.md): Realize o pagamento de um boleto ou QR Code em ambiente de Stage através desta API, podendo auxiliar em testes no fluxo de gestão de faturas.
+- [Emissão de boleto registrado](https://developers.cora.com.br/reference/emissão-de-boleto-registrado-v2.md): Gere um boleto registrado através desta API
+- [Emissão de carnê](https://developers.cora.com.br/reference/emissão-de-boleto-parcelado-v2.md): Gere um boleto parcelado através desta API
+- [Consulta de boletos](https://developers.cora.com.br/reference/consultar-boletos-v2.md): Consulte boletos gerados de acordo com a data de vencimento
+- [Consulta de detalhes do boleto](https://developers.cora.com.br/reference/consultar-detalhes-de-um-boleto-v2.md): Verifique mais informações sobre determinado boleto através desta API
+- [Cancelamento de boleto](https://developers.cora.com.br/reference/cancelamento-de-boleto-v2.md): Cancele os boletos gerados que ainda não foram pagos
+- [Consulta de notificações do boleto](https://developers.cora.com.br/reference/edição-de-notificações-do-boleto-copy.md): Consulta as notificações atreladas a um boleto através desta API
+- [Cancelamento de notificações do boleto](https://developers.cora.com.br/reference/cancelamento-de-boleto-copy.md): Cancele as notificações agendadas para um boleto
+- [Emissão de QR code Pix v2](https://developers.cora.com.br/reference/qr-code-pix-v2.md): Gere um QR code Pix através desta API
+- [Dados de Conta](https://developers.cora.com.br/reference/dados-de-conta.md): Visualize os dados da conta que foi dada a autorização através desta API
+- [Saldo de Conta](https://developers.cora.com.br/reference/saldo-de-conta.md): Visualize o saldo da conta através desta API
+- [Consulta de Extrato](https://developers.cora.com.br/reference/consulta-de-extrato.md): Consulte informações de créditos e débitos de sua conta através dessa API
+- [Iniciação de pagamento](https://developers.cora.com.br/reference/iniciação-de-pagamento.md): Inicie ou agende pagamentos através desta API
+- [Histórico de pagamentos](https://developers.cora.com.br/reference/lista-de-pagamentos.md): Acesse o histórico de pagamentos iniciados via API
+- [Cancelamento de pagamento](https://developers.cora.com.br/reference/cancelamento-de-pagamento.md): Cancele a iniciação de um pagamento previamente iniciado através de API
+- [Iniciação de Pagamento DARF](https://developers.cora.com.br/reference/iniciação-de-pagamento-darf.md): Inicie o pagamento de uma DARF em nome de um cliente através desta API. Assim como outras operações de saída de dinheiro, os pagamento iniciados por API devem ser aprovados no aplicativo.
+- [Iniciação de Pagamento GPS](https://developers.cora.com.br/reference/iniciação-de-pagamento-gps.md): Inicie um pagamento de GPS através desta API. Assim como outras operações de saída de dinheiro, os pagamento iniciados por API devem ser aprovados no aplicativo.
+- [Iniciação de transferência](https://developers.cora.com.br/reference/iniciação-de-transferência.md): Inicie uma transferência por API
+- [Lista de transferências](https://developers.cora.com.br/reference/lista-de-transferência.md)
+- [Lista de bancos](https://developers.cora.com.br/reference/lista-de-bancos.md): Para auxiliar a composição dos dados necessários para as diversas modalidades de transferências
+- [Criação de pré-cadastro](https://developers.cora.com.br/reference/criação-de-pré-cadastro.md)
+- [Reporte do pré-cadastro](https://developers.cora.com.br/reference/reporte-do-pré-cadastro.md): Essa API retorna os estados dos clientes que foram indicados por vocês.
+- [Criação de endpoints](https://developers.cora.com.br/reference/criação-de-endpoints.md): Defina seus endpoints através desta API
+- [Lista de endpoints](https://developers.cora.com.br/reference/lista-de-endpoints.md): Consulte uma lista com seus endpoints através desta API
+- [Exclusão de endpoint](https://developers.cora.com.br/reference/exclusão-de-endpoint.md): Exclua um endpoint através desta API
+- [Exemplo de POST da Notificação](https://developers.cora.com.br/reference/exemplo-de-post-da-notificação.md): Veja amostras de conteúdo das notificações dos eventos
+- [Lista de cidades disponíveis](https://developers.cora.com.br/reference/cidades-disponíveis.md): Verifique as cidades que estão habilitadas para emissão municipal de nota fiscal de serviço na Cora
+- [Consulta de disponibilidade de nota fiscal para o cliente](https://developers.cora.com.br/reference/disponibilidade-da-nota-fiscal-por-cliente.md): Verifique a disponibilidade da nota fiscal para determinado cliente Cora.
+- [Cadastro de cliente para emissão de NFS-e](https://developers.cora.com.br/reference/cadastro-do-emissor-de-nota-fiscal.md): Cadastre as informações iniciais obrigatórias para emissão de nota fiscal de serviço
+- [Upload de certificado e credenciais de acesso](https://developers.cora.com.br/reference/upload-certificado-a1-e-credenciais-nfse.md): Cadastre as credenciais de acesso na prefeitura e o certificado digital utilizado na comunicação e emissão de nota fiscal de serviço
+- [Consulta de CNAEs do cliente](https://developers.cora.com.br/reference/consulta-de-cnae.md): Consulte uma lista dos CNAEs primário e secundários do cliente
+- [Consulta de códigos de serviço por cliente](https://developers.cora.com.br/reference/consulta-de-codigo-de-servico.md): Esse recurso retorna a lista de códigos de serviço do cliente
+- [Emissão de nota fiscal de serviço](https://developers.cora.com.br/reference/emissão-nota-fiscal-servico.md): Cadastre as informações iniciais obrigatórias para emissão de nota fiscal de serviço
+- [Consulta de nota fiscal de serviço](https://developers.cora.com.br/reference/consulta-de-nota-fiscal-de-serviço.md): Consulte as informações de sua nota fiscal de serviço
+- [Edição de nota fiscal de serviço](https://developers.cora.com.br/reference/edição-de-nota-fiscal-de-serviço.md): Edite as informações da nota fiscal de serviço.
+- [Cancelamento de Nota Fiscal de Serviço](https://developers.cora.com.br/reference/cancelamento-de-nfse.md): Esse recurso permite cancelar uma nota fiscal de serviço já emitida
+
+## Changelog
+- [Welcome to Cora API](https://developers.cora.com.br/changelog/welcome-to-cora-api.md)

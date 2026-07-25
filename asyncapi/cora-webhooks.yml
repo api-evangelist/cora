@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.cora.com.br/reference/exemplo-de-post-da-notificação
+spec_type: Webhooks
+docs:
+- https://developers.cora.com.br/reference/criação-de-endpoints
+- https://developers.cora.com.br/reference/lista-de-endpoints
+- https://developers.cora.com.br/reference/exclusão-de-endpoint
+- https://developers.cora.com.br/reference/exemplo-de-post-da-notificação
+delivery:
+  transport: HTTP POST
+  detail: >-
+    Consumers register one or more notification endpoints; Cora delivers event
+    notifications to the registered endpoint via HTTP POST. Sample payloads are
+    published to support testing.
+management:
+  register: POST — Criação de endpoints (define seus endpoints)
+  list: GET — Lista de endpoints
+  delete: DELETE — Exclusão de endpoint
+events:
+- name: boleto notifications
+  detail: >-
+    Notifications tied to a boleto lifecycle (creation, payment, cancellation) can be
+    configured and queried per boleto (Consulta/Cancelamento de notificações do boleto).
+notes: >-
+  Cora documents a webhook/notification surface but publishes no AsyncAPI document.
+  This artifact captures the webhook catalog only; no AsyncAPI spec was fabricated.

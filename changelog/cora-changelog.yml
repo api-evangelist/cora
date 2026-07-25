@@ -1,0 +1,15 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.cora.com.br/changelog
+docs: https://developers.cora.com.br/changelog
+scheme: dated-entries
+notes: >-
+  Cora publishes a dated changelog on the developer portal (ReadMe-hosted). Only the
+  seed/welcome entry is captured verbatim below; the live changelog page is the source
+  of truth for the current window.
+entries:
+- title: Welcome to Cora API
+  url: https://developers.cora.com.br/changelog/welcome-to-cora-api
+  breaking: false
+  highlights:
+  - Launch of the public Cora API developer portal and changelog.

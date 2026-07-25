@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.cora.com.br/docs/instrucoes-iniciais
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://developers.cora.com.br/reference
+  detail: Resource versions carried in the URL path (e.g. /v2/invoices, qr-code-pix-v2).
+changelog: https://developers.cora.com.br/changelog
+status_page: null
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No public deprecation policy or Sunset/Deprecation header support documented.
+sla:
+  url: null
+notes: >-
+  Cora runs distinct Stage and Production environments. No public status page or
+  formal deprecation policy was found at the time of enrichment; versioning is via
+  URL path and the developer-portal changelog tracks changes.

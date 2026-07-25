@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+hosts:
+- host: https://developers.cora.com.br
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://www.cora.com.br
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://matls-clients.api.cora.com.br
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 401
+    note: Host exists but requires client-certificate / auth; no public OIDC discovery document.
+- host: https://api.cora.com.br
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+notes: >-
+  No /.well-known discovery documents are publicly served (200) on Cora's website,
+  developer portal, or API hosts. Recorded as probe results; no WellKnown catalog
+  pointer is emitted since nothing returned 200.

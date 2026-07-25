@@ -1,0 +1,33 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.cora.com.br/docs/client-credentials-int-direta
+standards:
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: >-
+    /token endpoint issues Bearer tokens via grant_type=client_credentials
+    (docs: client-credentials-int-direta).
+- id: mutual-tls
+  conforms: true
+  evidence: Direct Integration requires an X.509 client certificate + private key on every request.
+- id: idempotency
+  conforms: true
+  evidence: Idempotency-Key (UUID) request header, referencing RFC 9110, dedups record creation.
+- id: rfc9110-http-semantics
+  conforms: true
+  evidence: Idempotency handling explicitly cites RFC 9110.
+- id: webhooks
+  conforms: true
+  evidence: Registerable notification endpoints delivering events via HTTP POST.
+- id: pix
+  conforms: true
+  evidence: Native Brazilian Pix instant-payment support (Pix QR code issuance, Pix boletos).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json error format documented.
+notes: >-
+  Derived/searched from the developer documentation. Cora publishes no formal
+  compliance-certification program (SOC 2 / ISO 27001 / PCI) on its developer surface,
+  so no Compliance pointer is emitted. As a licensed Brazilian payments institution
+  Cora is regulated by the Banco Central do Brasil, but that is a regulatory status,
+  not a published API compliance artifact.
