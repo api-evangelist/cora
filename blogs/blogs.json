@@ -3,9 +3,12 @@
   "feeds": [
     {
       "source": "https://developers.cora.com.br/changelog/welcome-to-cora-api",
-      "error": "HTTPError"
+      "feed_url": "https://developers.cora.com.br/changelog/welcome-to-cora-api",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-01T15:49:00Z"
+  "fetched": "2026-08-06T14:08:46Z"
 }
