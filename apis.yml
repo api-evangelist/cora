@@ -43,6 +43,17 @@ tags:
 - Invoicing
 - SMB
 - Fintech
+- Banking as a Service
+tags_raw:
+- Company
+- Banking
+- Brazil
+- Payments
+- Pix
+- Boleto
+- Invoicing
+- SMB
+- Fintech
 - Banking-as-a-Service
 apis:
 - name: Cora API
