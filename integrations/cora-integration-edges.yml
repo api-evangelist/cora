@@ -1,0 +1,44 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/cora/integrations
+- https://n8n.io/integrations/cora/
+- https://composio.dev/toolkits/cora
+- https://monid.ai/tools/cora
+checked:
+- https://composio.dev/toolkits/cora
+- https://data.directory.openbankingbrasil.org.br/participants
+- https://monid.ai/tools/cora
+- https://n8n.io/integrations/cora/
+- https://zapier.com/apps/cora/integrations
+summary: null
+marketplace_apps: []
+edges:
+- partner_name: Open Finance Brasil
+  partner: null
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.directory.openbankingbrasil.org.br/participants
+  contract_reference:
+    register: Open Finance Brasil directory (Banco Central do Brasil)
+    spec_file: null
+    role: participant
+    registered_name: CORA SCFI S.A.
+    register_id: 19f45346-a153-584d-b10f-3f57a20c4a75
+    matched_domain: cora.com.br
+    api_families:
+    - admin
+    - discovery_outages
+    - discovery_status
+    - enrollments
+    - payments-consents
+    - payments-pix
+    - payments-pix-recurring-payments
+    - payments-pix-recurring-payments-automatic
+    - payments-recurring-consents
+    - payments-recurring-consents-automatic
+    detected_by: sweep-standard-registers.py
+    detected: '2026-10-12'
+templates: []
