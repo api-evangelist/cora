@@ -1,0 +1,125 @@
+[
+ {
+  "page": "https://developers.cora.com.br/reference/lista-de-endpoints.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "notificações",
+    "version": "1.0"
+   },
+   "servers": [
+    {
+     "url": "https://api.stage.cora.com.br/endpoints"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "get": {
+      "summary": "Lista de endpoints",
+      "description": "Consulte uma lista com seus endpoints através desta API",
+      "operationId": "lista-de-endpoints",
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "[\n    {\n        \"id\": \"end_1dzQ6B1JwfYmiYBclCZnvR\",\n        \"url\": \"https://postb.in/1591876773682-9229138223454\",\n        \"resource\": \"invoice\",\n        \"trigger\": \"*\",\n        \"connectionTimeout\": 1000,\n        \"readTimeout\": 2000,\n        \"includeResource\": false,\n        \"expandable\": false,\n        \"active\": true\n    }\n]"
+           }
+          },
+          "schema": {
+           "type": "array",
+           "items": {
+            "type": "object",
+            "properties": {
+             "id": {
+              "type": "string",
+              "example": "end_1dzQ6B1JwfYmiYBclCZnvR"
+             },
+             "url": {
+              "type": "string",
+              "example": "https://postb.in/1591876773682-9229138223454"
+             },
+             "resource": {
+              "type": "string",
+              "example": "invoice"
+             },
+             "trigger": {
+              "type": "string",
+              "example": "*"
+             },
+             "connectionTimeout": {
+              "type": "integer",
+              "example": 1000,
+              "default": 0
+             },
+             "readTimeout": {
+              "type": "integer",
+              "example": 2000,
+              "default": 0
+             },
+             "includeResource": {
+              "type": "boolean",
+              "example": false,
+              "default": true
+             },
+             "expandable": {
+              "type": "boolean",
+              "example": false,
+              "default": true
+             },
+             "active": {
+              "type": "boolean",
+              "example": true,
+              "default": true
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

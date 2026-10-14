@@ -1,0 +1,77 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/cora-base-openapi.yml
+- openapi/cora-boletos-openapi.yml
+- openapi/cora-boletos-v2-openapi.yml
+- openapi/cora-dados-de-conta-openapi.yml
+- openapi/cora-extrato-openapi.yml
+- openapi/cora-nota-fiscal-de-servi-o-openapi.yml
+- openapi/cora-notifica-es-openapi.yml
+- openapi/cora-pagamento-de-impostos-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: null
+coverage:
+  operations: 20
+  statuses_declared: 8
+problems:
+- status: 400
+  title: Bad Request
+  description: '400'
+  operations: 19
+  media_types:
+  - application/json
+  - text/plain
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: '401'
+  operations: 4
+  media_types:
+  - application/json
+  schema: null
+- status: 404
+  title: Not Found
+  description: '404'
+  operations: 2
+  media_types:
+  - application/json
+  schema: null
+- status: 415
+  title: Unsupported Media Type
+  description: '415'
+  operations: 2
+  media_types:
+  - text/plain
+  schema: null
+- status: 422
+  title: Unprocessable Content
+  description: '422'
+  operations: 1
+  media_types:
+  - application/json
+  schema: null
+- status: 500
+  title: Internal Server Error
+  description: '500'
+  operations: 3
+  media_types:
+  - application/json
+  schema: null
+- status: 503
+  title: Service Unavailable
+  description: '503'
+  operations: 1
+  media_types:
+  - application/json
+  schema: null
+- status: 504
+  title: Gateway Timeout
+  description: '504'
+  operations: 1
+  media_types:
+  - text/plain
+  schema: null

@@ -1,0 +1,120 @@
+generated: '2026-10-14'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/cora-base-openapi.yml
+- openapi/cora-boletos-openapi.yml
+- openapi/cora-boletos-v2-openapi.yml
+- openapi/cora-dados-de-conta-openapi.yml
+- openapi/cora-extrato-openapi.yml
+- openapi/cora-nota-fiscal-de-servi-o-openapi.yml
+- openapi/cora-notifica-es-openapi.yml
+- openapi/cora-pagamento-de-impostos-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: derived
+note: No MCP server was found. No probe result in the dossier. Candidate tools below are derived from the 20 operation(s) in the provider's own
+  OpenAPI (20 listed); they describe what a server WOULD expose, not one that exists.
+tools:
+- name: lista_de_bancos
+  operationId: lista-de-bancos
+  method: GET
+  path: /banks
+  description: Lista de bancos
+- name: pagar_boleto_em_stage
+  operationId: pagar-boleto-em-stage
+  method: POST
+  path: /pay
+  description: Pagar boleto em stage
+- name: consultar_boletos_v2
+  operationId: consultar-boletos-v2
+  method: GET
+  path: /
+  description: Consulta de boletos
+- name: dados_de_conta
+  operationId: dados-de-conta
+  method: GET
+  path: /
+  description: Dados de Conta
+- name: consulta_de_extrato
+  operationId: consulta-de-extrato
+  method: GET
+  path: /statement
+  description: Consulta de Extrato
+- name: disponibilidade_da_nota_fiscal_por_cliente
+  operationId: disponibilidade-da-nota-fiscal-por-cliente
+  method: GET
+  path: /businesses/check-availability
+  description: Consulta de disponibilidade de nota fiscal para o cliente
+- name: lista_de_endpoints
+  operationId: lista-de-endpoints
+  method: GET
+  path: /
+  description: Lista de endpoints
+- name: lista_de_pagamentos
+  operationId: lista-de-pagamentos
+  method: GET
+  path: /
+  description: Histórico de pagamentos
+- name: emissão_de_boleto_registrado_v2
+  operationId: emissão-de-boleto-registrado-v2
+  method: POST
+  path: /
+  description: Emissão de boleto registrado
+- name: saldo_de_conta
+  operationId: saldo-de-conta
+  method: GET
+  path: /balance
+  description: Saldo de Conta
+- name: consulta_de_cnae
+  operationId: consulta-de-cnae
+  method: GET
+  path: /businesses/cnaes
+  description: Consulta de CNAEs do cliente
+- name: cancelamento_de_pagamento
+  operationId: cancelamento-de-pagamento
+  method: DELETE
+  path: /initiate/{payment_id}
+  description: Cancelamento de pagamento
+- name: qr_code_pix_v2
+  operationId: qr-code-pix-v2
+  method: POST
+  path: //
+  description: Emissão de QR code Pix v2
+- name: consulta_de_codigo_de_servico
+  operationId: consulta-de-codigo-de-servico
+  method: GET
+  path: /businesses/service-codes
+  description: Consulta de códigos de serviço por cliente
+- name: consultar_detalhes_de_um_boleto_v2
+  operationId: consultar-detalhes-de-um-boleto-v2
+  method: GET
+  path: /{invoice_id}
+  description: Consulta de detalhes do boleto
+- name: upload_certificado_a1_e_credenciais_nfse
+  operationId: upload-certificado-a1-e-credenciais-nfse
+  method: POST
+  path: /credentials
+  description: Upload de certificado e credenciais de acesso
+- name: cancelamento_de_boleto_v2
+  operationId: cancelamento-de-boleto-v2
+  method: DELETE
+  path: /{invoice_id}
+  description: Cancelamento de boleto
+- name: cadastro_do_emissor_de_nota_fiscal
+  operationId: cadastro-do-emissor-de-nota-fiscal
+  method: POST
+  path: /issuer
+  description: Cadastro de cliente para emissão de NFS-e
+- name: cancelamento_de_boleto_copy
+  operationId: cancelamento-de-boleto-copy
+  method: DELETE
+  path: /{invoice_id}/notifications
+  description: Cancelamento de notificações do boleto
+- name: cancelamento_de_nfse
+  operationId: cancelamento-de-nfse
+  method: DELETE
+  path: /service-receipt/{service_receipt_id}
+  description: Cancelamento de Nota Fiscal de Serviço

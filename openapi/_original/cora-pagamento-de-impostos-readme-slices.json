@@ -1,0 +1,421 @@
+[
+ {
+  "page": "https://developers.cora.com.br/reference/lista-de-pagamentos.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "pagamento-de-impostos",
+    "version": "1.0"
+   },
+   "servers": [
+    {
+     "url": "https://api.stage.cora.com.br/payments"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "get": {
+      "summary": "Histórico de pagamentos",
+      "description": "Acesse o histórico de pagamentos iniciados via API",
+      "operationId": "lista-de-pagamentos",
+      "parameters": [
+       {
+        "name": "status",
+        "in": "query",
+        "schema": {
+         "type": "string",
+         "default": "INITIATED"
+        }
+       },
+       {
+        "name": "start",
+        "in": "query",
+        "schema": {
+         "type": "string",
+         "default": "2023-11-15"
+        }
+       },
+       {
+        "name": "end",
+        "in": "query",
+        "schema": {
+         "type": "string",
+         "default": "2023-11-16"
+        }
+       },
+       {
+        "name": "page",
+        "in": "query",
+        "schema": {
+         "type": "string",
+         "default": "0"
+        }
+       },
+       {
+        "name": "size",
+        "in": "query",
+        "schema": {
+         "type": "string",
+         "default": "10"
+        }
+       }
+      ],
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"total_items\": 2,\n    \"has_more\": false,\n    \"content\": [\n        {\n            \"id\": \"pay_3GGstLJrjRmU1VFFeHbVGm\",\n            \"status\": \"INITIATED\",\n            \"amount\": 1105,\n            \"creditor\": {\n                \"name\": \"Cora Bank\",\n                \"document\": \"34052649000178\",\n                \"type\": \"PF\"\n            },\n            \"services\": [\n                {\n                    \"name\": \"Cora Bank\",\n                    \"description\": null,\n                    \"amount\": 1000\n                }\n            ],\n            \"bank_slip\": {\n                \"barcode\": \"00194812100000000010000003202047001878584517\",\n                \"digitable\": \"001900000903202047009000188957179991970000002735\",\n                \"registered\": true,\n                \"url\": null,\n                \"fine\": 70,\n                \"interest\": 35,\n                \"interest_monthly_percent\": 0.0,\n                \"fine_percent\": 0.0,\n                \"fine_value\": 0,\n                \"discount_percent\": 0.0,\n                \"discount_value\": 0,\n                \"bill_type\": \"REGULAR\",\n                \"tax_type\": null\n            },\n            \"payment_terms\": {\n                \"due_date\": \"2023-06-06\",\n                \"available_date\": null\n            },\n            \"created_at\": \"2023-05-02T20:25:04\",\n            \"scheduled_at\": null,\n            \"code\": null\n        },\n        {\n            \"id\": \"pay_1BfWu4uq2hdK0EOXk73ZSY\",\n            \"status\": \"INITIATED\",\n            \"amount\": 1105,\n            \"creditor\": {\n                \"name\": \"Cora Bank\",\n                \"document\": \"34052649000178\",\n                \"type\": \"PF\"\n            },\n            \"services\": [\n                {\n                    \"name\": \"Cora Bank\",\n                    \"description\": null,\n                    \"amount\": 1000\n                }\n            ],\n            \"bank_slip\": {\n                \"barcode\": \"00194812100000000010000003202047002240474517\",\n                \"digitable\": \"00190000090320204700900019957179991970000002735\",\n                \"registered\": true,\n                \"url\": null,\n                \"fine\": 70,\n                \"interest\": 35,\n                \"interest_monthly_percent\": 0.0,\n                \"fine_percent\": 0.0,\n                \"fine_value\": 0,\n                \"discount_percent\": 0.0,\n                \"discount_value\": 0,\n                \"bill_type\": \"REGULAR\",\n                \"tax_type\": null\n            },\n            \"payment_terms\": {\n                \"due_date\": \"2023-06-06\",\n                \"available_date\": null\n            },\n            \"created_at\": \"2023-05-02T20:23:27\",\n            \"scheduled_at\": null,\n            \"code\": null\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "total_items": {
+             "type": "integer",
+             "example": 2,
+             "default": 0
+            },
+            "has_more": {
+             "type": "boolean",
+             "example": false,
+             "default": true
+            },
+            "content": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "id": {
+                "type": "string",
+                "example": "pay_3GGstLJrjRmU1VFFeHbVGm"
+               },
+               "status": {
+                "type": "string",
+                "example": "INITIATED"
+               },
+               "amount": {
+                "type": "integer",
+                "example": 1105,
+                "default": 0
+               },
+               "creditor": {
+                "type": "object",
+                "properties": {
+                 "name": {
+                  "type": "string",
+                  "example": "Cora Bank"
+                 },
+                 "document": {
+                  "type": "string",
+                  "example": "34052649000178"
+                 },
+                 "type": {
+                  "type": "string",
+                  "example": "PF"
+                 }
+                }
+               },
+               "services": {
+                "type": "array",
+                "items": {
+                 "type": "object",
+                 "properties": {
+                  "name": {
+                   "type": "string",
+                   "example": "Cora Bank"
+                  },
+                  "description": {},
+                  "amount": {
+                   "type": "integer",
+                   "example": 1000,
+                   "default": 0
+                  }
+                 }
+                }
+               },
+               "bank_slip": {
+                "type": "object",
+                "properties": {
+                 "barcode": {
+                  "type": "string",
+                  "example": "00194812100000000010000003202047001878584517"
+                 },
+                 "digitable": {
+                  "type": "string",
+                  "example": "001900000903202047009000188957179991970000002735"
+                 },
+                 "registered": {
+                  "type": "boolean",
+                  "example": true,
+                  "default": true
+                 },
+                 "url": {},
+                 "fine": {
+                  "type": "integer",
+                  "example": 70,
+                  "default": 0
+                 },
+                 "interest": {
+                  "type": "integer",
+                  "example": 35,
+                  "default": 0
+                 },
+                 "interest_monthly_percent": {
+                  "type": "integer",
+                  "example": 0,
+                  "default": 0
+                 },
+                 "fine_percent": {
+                  "type": "integer",
+                  "example": 0,
+                  "default": 0
+                 },
+                 "fine_value": {
+                  "type": "integer",
+                  "example": 0,
+                  "default": 0
+                 },
+                 "discount_percent": {
+                  "type": "integer",
+                  "example": 0,
+                  "default": 0
+                 },
+                 "discount_value": {
+                  "type": "integer",
+                  "example": 0,
+                  "default": 0
+                 },
+                 "bill_type": {
+                  "type": "string",
+                  "example": "REGULAR"
+                 },
+                 "tax_type": {}
+                }
+               },
+               "payment_terms": {
+                "type": "object",
+                "properties": {
+                 "due_date": {
+                  "type": "string",
+                  "example": "2023-06-06"
+                 },
+                 "available_date": {}
+                }
+               },
+               "created_at": {
+                "type": "string",
+                "example": "2023-05-02T20:25:04"
+               },
+               "scheduled_at": {},
+               "code": {}
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"code\": \"invalid_request_error\",\n    \"message\": \"Request has invalid parameters\",\n    \"errors\": [\n        {\n            \"id\": \"start\",\n            \"message\": \"invalid parameter\"\n        }\n    ]\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "invalid_request_error"
+            },
+            "message": {
+             "type": "string",
+             "example": "Request has invalid parameters"
+            },
+            "errors": {
+             "type": "array",
+             "items": {
+              "type": "object",
+              "properties": {
+               "id": {
+                "type": "string",
+                "example": "start"
+               },
+               "message": {
+                "type": "string",
+                "example": "invalid parameter"
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://developers.cora.com.br/reference/cancelamento-de-pagamento.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "pagamento-de-impostos",
+    "version": "1.0"
+   },
+   "servers": [
+    {
+     "url": "https://api.stage.cora.com.br/payments"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/initiate/{payment_id}": {
+     "delete": {
+      "summary": "Cancelamento de pagamento",
+      "description": "Cancele a iniciação de um pagamento previamente iniciado através de API",
+      "operationId": "cancelamento-de-pagamento",
+      "parameters": [
+       {
+        "name": "payment_id",
+        "in": "path",
+        "schema": {
+         "type": "string",
+         "default": "pay_2UydSaZKpUrOCUkaE2IWyV"
+        },
+        "required": true
+       },
+       {
+        "name": "Idempotency-Key",
+        "in": "header",
+        "required": true,
+        "schema": {
+         "type": "string",
+         "default": "d4f72104-66cd-4b1a-9a92-700b2e1d2c18"
+        }
+       }
+      ],
+      "responses": {
+       "204": {
+        "description": "204",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"code\": \"PAY-0006\",\n    \"message\": \"The payment is not initiated\"\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "PAY-0006"
+            },
+            "message": {
+             "type": "string",
+             "example": "The payment is not initiated"
+            }
+           }
+          }
+         }
+        }
+       },
+       "500": {
+        "description": "500",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"code\": \"internal_error\",\n    \"message\": \"An error has occurred and we're working to fix the problem!\"\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "code": {
+             "type": "string",
+             "example": "internal_error"
+            },
+            "message": {
+             "type": "string",
+             "example": "An error has occurred and we're working to fix the problem!"
+            }
+           }
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

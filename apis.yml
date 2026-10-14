@@ -1,4 +1,5 @@
 aid: cora
+
 deliveryModel:
   model: saas
   open_source: false
@@ -10,6 +11,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -22,31 +24,43 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cora.png
+
 name: Cora
-description: 'Cora is a Brazilian digital bank (conta PJ) for small and medium businesses,
-  offering fee-free business checking, Pix, boletos, transfers, payment initiation and
-  financial management. Its developer platform exposes REST APIs for registered boleto
-  and carnê issuance, Pix QR code generation, account data, balance and statement queries,
-  payment and transfer initiation (including DARF and GPS tax payments), webhook
-  notifications, and municipal service invoice (NFS-e) issuance. Cora offers two
-  integration modalities — Direct Integration (mutual-TLS certificate plus OAuth2
-  client-credentials) and Cora Partnership — with a Stage sandbox for testing. Backed
-  by QED Investors and Ribbit Capital.'
+
+description: Cora is a Brazilian digital bank (conta PJ) for small and medium businesses, offering fee-free business checking, Pix, boletos, transfers,
+  payment initiation and financial management. Its developer platform exposes REST APIs for registered boleto and carnê issuance, Pix QR code
+  generation, account data, balance and statement queries, payment and transfer initiation (including DARF and GPS tax payments), webhook notifications,
+  and municipal service invoice (NFS-e) issuance. Cora offers two integration modalities — Direct Integration (mutual-TLS certificate plus OAuth2
+  client-credentials) and Cora Partnership — with a Stage sandbox for testing. Backed by QED Investors and Ribbit Capital.
+
 url: https://raw.githubusercontent.com/api-evangelist/cora/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: vc-portfolio
+
 x-backed-by:
 - qed-investors
 - ribbit-capital
+
 x-tier: stub
+
 x-tier-reason: portfolio-lead
+
 specificationVersion: '0.23'
+
 created: '2026-07-17'
+
 modified: '2026-10-06'
+
 x-docs-platform: readme
+
 x-docs-platform-confidence: high
+
 x-docs-platform-checked: 2026-09-24
+
 tags:
 - Company
 - Banking
@@ -58,6 +72,7 @@ tags:
 - Small Business
 - Fintech
 - Banking as a Service
+
 tags_raw:
 - Company
 - Banking
@@ -69,27 +84,30 @@ tags_raw:
 - SMB
 - Fintech
 - Banking-as-a-Service
-apis:
-- name: Cora API
-  description: 'Cora''s transactional banking API for Direct Integration: registered
-    boleto and carnê (installment) issuance, Pix QR codes, account data, balance and
-    statement queries, payment and transfer initiation (DARF/GPS), webhook notification
-    endpoints, and NFS-e municipal service invoicing. Authenticated with mutual TLS
-    (client certificate + private key) and OAuth2 client-credentials bearer tokens.'
-  humanURL: https://developers.cora.com.br/
-  baseURL: https://matls-clients.api.cora.com.br
-  tags:
-  - Banking
-  - Payments
-  - Pix
-  - Boleto
-  - Invoicing
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: AgenticAccess
+  url: agentic-access/cora-agentic-access.yml
+- type: Spectral
+  url: rules/cora-rules.yml
+- type: ErrorCatalog
+  url: errors/cora-problem-types.yml
+- type: Hosts
+  url: hosts/cora-hosts.yml
+- type: IntegrationEdges
+  url: integrations/cora-integration-edges.yml
+- type: Vendors
+  url: vendors/cora-vendors.yml
+- type: Newsroom
+  url: https://www.cora.com.br/news/
+- type: OAuthScopes
+  url: scopes/cora-scopes.yml
 - url: https://www.cora.com.br/blog/feed/
   type: BlogRSS
 - type: Website
@@ -114,8 +132,6 @@ common:
   url: https://www.cora.com.br/integracoes/
 - type: TermsOfService
   url: https://www.cora.com.br/termos-e-condicoes-de-apis/
-- type: PrivacyPolicy
-  url: https://www.cora.com.br/politica-de-privacidade/
 - type: Postman
   url: https://www.postman.com/corabank/cora-s-public-workspace/documentation/ppi1okk/api-cora
 - type: LLMsTxt
@@ -136,8 +152,110 @@ common:
   url: conformance/cora-conformance.yml
 - type: DomainSecurity
   url: security/cora-domain-security.yml
+
+apis:
+- name: Cora API
+  description: 'Cora''s transactional banking API for Direct Integration: registered boleto and carnê (installment) issuance, Pix QR codes, account
+    data, balance and statement queries, payment and transfer initiation (DARF/GPS), webhook notification endpoints, and NFS-e municipal service
+    invoicing. Authenticated with mutual TLS (client certificate + private key) and OAuth2 client-credentials bearer tokens.'
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Banking
+  - Payments
+  - Pix
+  - Boleto
+  - Invoicing
+  aid: cora:cora-api
+- aid: cora:cora-base
+  name: Cora Base Openapi.Yml API
+  description: The Base Openapi.Yml API from Cora — 1 operation(s) for base openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Base Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-base-openapi.yml
+- aid: cora:cora-boletos
+  name: Cora Boletos Openapi.Yml API
+  description: The Boletos Openapi.Yml API from Cora — 1 operation(s) for boletos openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Boletos Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-boletos-openapi.yml
+- aid: cora:cora-boletos-v2
+  name: Cora Boletos V2 Openapi.Yml API
+  description: The Boletos V2 Openapi.Yml API from Cora — 4 operation(s) for boletos v2 openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Boletos V2 Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-boletos-v2-openapi.yml
+- aid: cora:cora-dados-de-conta
+  name: Cora Dados De Conta Openapi.Yml API
+  description: The Dados De Conta Openapi.Yml API from Cora — 2 operation(s) for dados de conta openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Dados De Conta Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-dados-de-conta-openapi.yml
+- aid: cora:cora-extrato
+  name: Cora Extrato Openapi.Yml API
+  description: The Extrato Openapi.Yml API from Cora — 1 operation(s) for extrato openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Extrato Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-extrato-openapi.yml
+- aid: cora:cora-nota-fiscal-de-servi-o
+  name: Cora Nota Fiscal De Servi O Openapi.Yml API
+  description: The Nota Fiscal De Servi O Openapi.Yml API from Cora — 6 operation(s) for nota fiscal de servi o openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Nota Fiscal De Servi O Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-nota-fiscal-de-servi-o-openapi.yml
+- aid: cora:cora-notifica-es
+  name: Cora Notifica Es Openapi.Yml API
+  description: The Notifica Es Openapi.Yml API from Cora — 1 operation(s) for notifica es openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Notifica Es Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-notifica-es-openapi.yml
+- aid: cora:cora-pagamento-de-impostos
+  name: Cora Pagamento De Impostos Openapi.Yml API
+  description: The Pagamento De Impostos Openapi.Yml API from Cora — 2 operation(s) for pagamento de impostos openapi.yml.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Pagamento De Impostos Openapi.Yml
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-pagamento-de-impostos-openapi.yml
+
 x-enrichment:
   date: '2026-07-19'
   status: backfilled
   pass: local-v1
   note: backfilled from .gitignore signal + verified work evidence
+
+x-readme-harvest:
+  date: '2026-10-14'
+  ops: 20
+  tool: harvest-readme-openapi.py
+  portal: https://developers.cora.com.br

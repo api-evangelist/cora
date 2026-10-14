@@ -1,0 +1,185 @@
+[
+ {
+  "page": "https://developers.cora.com.br/reference/dados-de-conta.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "dados-de-conta",
+    "version": "1.0"
+   },
+   "servers": [
+    {
+     "url": "https://api.stage.cora.com.br/third-party/account"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/": {
+     "get": {
+      "summary": "Dados de Conta",
+      "description": "Visualize os dados da conta que foi dada a autorização através desta API",
+      "operationId": "dados-de-conta",
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n  \"agency\": \"0001\",\n  \"accountNumber\": \"1063135\",\n  \"accountDigit\": \"1\",\n  \"bankCode\": \"403\",\n  \"bankName\": \"Cora SCD\"\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "agency": {
+             "type": "string",
+             "example": "0001"
+            },
+            "accountNumber": {
+             "type": "string",
+             "example": "1063135"
+            },
+            "accountDigit": {
+             "type": "string",
+             "example": "1"
+            },
+            "bankCode": {
+             "type": "string",
+             "example": "403"
+            },
+            "bankName": {
+             "type": "string",
+             "example": "Cora SCD"
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ },
+ {
+  "page": "https://developers.cora.com.br/reference/saldo-de-conta.md",
+  "definition": {
+   "openapi": "3.1.0",
+   "info": {
+    "title": "dados-de-conta",
+    "version": "1.0"
+   },
+   "servers": [
+    {
+     "url": "https://api.stage.cora.com.br/third-party/account"
+    }
+   ],
+   "components": {
+    "securitySchemes": {
+     "sec0": {
+      "type": "oauth2",
+      "flows": {}
+     }
+    }
+   },
+   "security": [
+    {
+     "sec0": []
+    }
+   ],
+   "paths": {
+    "/balance": {
+     "get": {
+      "summary": "Saldo de Conta",
+      "description": "Visualize o saldo da conta através desta API",
+      "operationId": "saldo-de-conta",
+      "responses": {
+       "200": {
+        "description": "200",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{\n    \"balance\": 10000\n}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {
+            "balance": {
+             "type": "integer",
+             "example": 10000,
+             "default": 0
+            }
+           }
+          }
+         }
+        }
+       },
+       "400": {
+        "description": "400",
+        "content": {
+         "application/json": {
+          "examples": {
+           "Result": {
+            "value": "{}"
+           }
+          },
+          "schema": {
+           "type": "object",
+           "properties": {}
+          }
+         }
+        }
+       }
+      },
+      "deprecated": false
+     }
+    }
+   },
+   "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+   },
+   "x-readme-fauxas": true
+  }
+ }
+]

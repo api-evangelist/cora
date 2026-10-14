@@ -1,0 +1,299 @@
+openapi: 3.1.0
+info:
+  title: nota-fiscal-de-serviço
+  version: '1.0'
+servers:
+- url: https://api.stage.cora.com.br/fiscal-receipts
+security:
+- sec0: []
+x-readme-fauxas: true
+paths:
+  /businesses/check-availability:
+    get:
+      summary: Consulta de disponibilidade de nota fiscal para o cliente
+      description: Verifique a disponibilidade da nota fiscal para determinado cliente Cora.
+      operationId: disponibilidade-da-nota-fiscal-por-cliente
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"isAvailable\": true\n}"
+              schema:
+                type: object
+                properties:
+                  isAvailable:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /businesses/cnaes:
+    get:
+      summary: Consulta de CNAEs do cliente
+      description: Consulte uma lista dos CNAEs primário e secundários do cliente
+      operationId: consulta-de-cnae
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"main\": {\n        \"code\": \"6202300\",\n        \"description\": \"Desenvolvimento e licenciamento de programas de computador customizáveis\"\n    },\n    \"secondary\": [\n        {\n            \"code\": \"6201501\",\n            \"description\": \"Desenvolvimento de programas de computador sob encomenda\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  main:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: '6202300'
+                      description:
+                        type: string
+                        example: Desenvolvimento e licenciamento de programas de computador customizáveis
+                  secondary:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: '6201501'
+                        description:
+                          type: string
+                          example: Desenvolvimento de programas de computador sob encomenda
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /businesses/service-codes:
+    get:
+      summary: Consulta de códigos de serviço por cliente
+      description: Esse recurso retorna a lista de códigos de serviço do cliente
+      operationId: consulta-de-codigo-de-servico
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n    {\n       \"code\": \"17.02\" || \"170201\",\n       \"description\": \"Desenvolvimento de programas de computador sob encomenda\"\n    }\n]"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /credentials:
+    post:
+      summary: Upload de certificado e credenciais de acesso
+      description: Cadastre as credenciais de acesso na prefeitura e o certificado digital utilizado na comunicação e emissão de nota fiscal de serviço
+      operationId: upload-certificado-a1-e-credenciais-nfse
+      parameters:
+      - name: Authorization
+        in: header
+        description: Access Token de acesso aos recursos da API
+        schema:
+          type: string
+      - name: content-type
+        in: header
+        schema:
+          type: string
+          default: multipart/form-data
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n   \"available\": true\n}"
+              schema:
+                type: object
+                properties:
+                  available:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /issuer:
+    post:
+      summary: Cadastro de cliente para emissão de NFS-e
+      description: Cadastre as informações iniciais obrigatórias para emissão de nota fiscal de serviço
+      operationId: cadastro-do-emissor-de-nota-fiscal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - municipal_register
+              - tax_regime
+              - special_tax_regime
+              - rps
+              properties:
+                municipal_register:
+                  type: string
+                  description: Inscrição municipal da empresa.
+                  default: '12345678'
+                state_register:
+                  type: string
+                  description: Inscrição Estadual da empresa.
+                  default: '12345678'
+                tax_regime:
+                  type: string
+                  description: Regime tributário da empresa
+                  default: SIMPLES_NACIONAL
+                special_tax_regime:
+                  type: string
+                  description: Regime tributário especial da empresa. Caso não tenha, enviar "NONE"
+                  default: NONE
+                rps:
+                  type: object
+                  description: Objeto RPS (série e número)
+                  required:
+                  - serie
+                  - last_number
+                  properties:
+                    serie:
+                      type: string
+                      description: Número de série do RPS. O padrão é "1",  mas tem cidades que aceitam letras como "U"
+                    last_number:
+                      type: string
+                      description: Último número de RPS utilizado.
+      responses:
+        '201':
+          description: '201'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"code\": \"FRA-001\",\n    \"message\": \"Received malformed JSON for IssuerSetupRequestDTO\"\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: FRA-001
+                  message:
+                    type: string
+                    example: Received malformed JSON for IssuerSetupRequestDTO
+  /service-receipt/{service_receipt_id}:
+    delete:
+      summary: Cancelamento de Nota Fiscal de Serviço
+      description: Esse recurso permite cancelar uma nota fiscal de serviço já emitida
+      operationId: cancelamento-de-nfse
+      parameters:
+      - name: service_receipt_id
+        in: path
+        description: Identificador da nota que será cancelada
+        schema:
+          type: string
+          default: nfse_g6Vm03d4S3qeDfZEB6gN1Q
+        required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+        '400':
+          description: '400'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: "{\n    \"code\": \"FR-004\",\n    \"message\": \"Receipt not found - id: nfse_g6Vm03d4S3qeDfZEB6gN1Q\"\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: FR-004
+                  message:
+                    type: string
+                    example: 'Receipt not found - id: nfse_g6Vm03d4S3qeDfZEB6gN1Q'
+        '422':
+          description: '422'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"code\": \"FR-004\",\n    \"message\": \"Receipt not found - id: nfse_g6Vm03d4S3qeDfZEB6gN1Q\"\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: FR-004
+                  message:
+                    type: string
+                    example: 'Receipt not found - id: nfse_g6Vm03d4S3qeDfZEB6gN1Q'
+      deprecated: false
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+x-provenance:
+  method: searched
+  source: https://developers.cora.com.br/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://developers.cora.com.br/reference/cadastro-do-emissor-de-nota-fiscal.md
+  - https://developers.cora.com.br/reference/cancelamento-de-nfse.md
+  - https://developers.cora.com.br/reference/consulta-de-cnae.md
+  - https://developers.cora.com.br/reference/consulta-de-codigo-de-servico.md
+  - https://developers.cora.com.br/reference/disponibilidade-da-nota-fiscal-por-cliente.md
+  - https://developers.cora.com.br/reference/upload-certificado-a1-e-credenciais-nfse.md
+  merge:
+    pages: 6
+    deduped: 5
+    conflicts_kept_first: 0

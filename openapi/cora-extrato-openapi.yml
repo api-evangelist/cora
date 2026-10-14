@@ -1,0 +1,222 @@
+openapi: 3.1.0
+info:
+  title: extrato
+  version: '1.0'
+servers:
+- url: https://api.stage.cora.com.br/bank-statement
+security:
+- sec0: []
+x-readme-fauxas: true
+paths:
+  /statement:
+    get:
+      summary: Consulta de Extrato
+      description: Consulte informações de créditos e débitos de sua conta através dessa API
+      operationId: consulta-de-extrato
+      parameters:
+      - name: start
+        in: query
+        schema:
+          type: string
+          format: date
+          default: '2023-01-15'
+      - name: end
+        in: query
+        schema:
+          type: string
+          format: date
+          default: '2023-01-16'
+      - name: type
+        in: query
+        schema:
+          type: string
+          default: ''
+      - name: transaction_type
+        in: query
+        schema:
+          type: string
+          default: TRANSFER
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: perPage
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: '50'
+      - name: aggr
+        in: query
+        schema:
+          type: boolean
+          default: 'true'
+        required: false
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value:
+                    start:
+                      date: '2023-04-06T00:00:00'
+                      balance: 242297
+                    entries:
+                    - id: ent_AilRQw91CRTqNucwvoeiMwg
+                      type: DEBIT
+                      amount: 1500
+                      createdAt: '2023-04-06T09:00:00+00'
+                      transaction:
+                        id: trx_ucn77rFISfOlFcTy48GSFA
+                        type: TRANSFER
+                        description: Teste
+                        counterParty:
+                          name: Test Account Company Name
+                          identity: '98537607000165'
+                    end:
+                      date: '2023-04-06T00:00:00'
+                      balance: 240797
+                    aggregations:
+                      creditTotal: 0
+                      debitTotal: 1500
+                    header:
+                      businessName: Test Account Company Name
+                      businessDocument: '54745456000889'
+              schema:
+                type: object
+                properties:
+                  start:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        example: '2023-04-06T00:00:00'
+                      balance:
+                        type: integer
+                        example: 242297
+                        default: 0
+                  entries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: ent_AilRQw91CRTqNucwvoeiMwg
+                        type:
+                          type: string
+                          example: DEBIT
+                        amount:
+                          type: integer
+                          example: 1500
+                          default: 0
+                        createdAt:
+                          type: string
+                          example: '2023-04-06T09:00:00+00'
+                        transaction:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              example: trx_ucn77rFISfOlFcTy48GSFA
+                            type:
+                              type: string
+                              example: TRANSFER
+                            description:
+                              type: string
+                              example: Teste
+                            counterParty:
+                              type: object
+                              properties:
+                                name:
+                                  type: string
+                                  example: Test Account Company Name
+                                identity:
+                                  type: string
+                                  example: '98537607000165'
+                  end:
+                    type: object
+                    properties:
+                      date:
+                        type: string
+                        example: '2023-04-06T00:00:00'
+                      balance:
+                        type: integer
+                        example: 240797
+                        default: 0
+                  aggregations:
+                    type: object
+                    properties:
+                      creditTotal:
+                        type: integer
+                        example: 0
+                        default: 0
+                      debitTotal:
+                        type: integer
+                        example: 1500
+                        default: 0
+                  header:
+                    type: object
+                    properties:
+                      businessName:
+                        type: string
+                        example: Test Account Company Name
+                      businessDocument:
+                        type: string
+                        example: '54745456000889'
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Day Out of Range:
+                  value: "{\n    \"errors\": [\n        {\n            \"code\": \"BST-0000\",\n            \"message\": \"parsing time \\\"2023-04-31\\\": day out of range\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: BST-0000
+                        message:
+                          type: string
+                          example: 'parsing time "2023-04-31": day out of range'
+        '503':
+          description: '503'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+        '504':
+          description: '504'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: ''
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+x-provenance:
+  method: searched
+  source: https://developers.cora.com.br/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://developers.cora.com.br/reference/consulta-de-extrato.md
+  merge:
+    pages: 1
+    deduped: 0
+    conflicts_kept_first: 0

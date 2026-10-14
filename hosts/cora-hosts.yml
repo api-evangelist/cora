@@ -1,0 +1,72 @@
+generated: '2026-10-14'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 5
+  own: 4
+  other_domain: 0
+  platform: 1
+  roles:
+  - api
+  - collections
+  - portal
+  - support
+  - website
+hosts:
+- host: developers.cora.com.br
+  found_by:
+  - pointer
+  - apis[]
+  types:
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  - GettingStarted
+  - ChangeLog
+  serves:
+  - docs
+  registrable_domain: cora.com.br
+  role: portal
+  relation: own
+- host: matls-clients.api.cora.com.br
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: cora.com.br
+  role: api
+  relation: own
+- host: meajuda.cora.com.br
+  found_by:
+  - pointer
+  types:
+  - Support
+  serves: []
+  registrable_domain: cora.com.br
+  role: support
+  relation: own
+- host: www.cora.com.br
+  found_by:
+  - pointer
+  types:
+  - BlogRSS
+  - Website
+  - Blog
+  - Pricing
+  - TermsOfService
+  - PrivacyPolicy
+  serves: []
+  registrable_domain: cora.com.br
+  role: website
+  relation: own
+- host: www.postman.com
+  found_by:
+  - pointer
+  types:
+  - Postman
+  serves: []
+  registrable_domain: postman.com
+  role: collections
+  relation: platform

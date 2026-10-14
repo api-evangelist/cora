@@ -1,0 +1,378 @@
+openapi: 3.1.0
+info:
+  title: boletos
+  version: '1.0'
+servers:
+- url: https://api.stage.cora.com.br/v2/invoices
+security:
+- sec0: []
+x-readme-fauxas: true
+paths:
+  /pay:
+    post:
+      summary: 'Pagar boleto em stage '
+      description: Realize o pagamento de um boleto ou QR Code em ambiente de Stage através desta API, podendo auxiliar em testes no fluxo de gestão de faturas.
+      operationId: pagar-boleto-em-stage
+      parameters:
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          default: dd61d5b9-c9fb-4116-b5e0-1f8436993ac4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+                  default: inv_1kprHFLcTuGD99NKeOeGT8Q
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"id\": \"d64a6b1c-52dc-4ee1-83f4-d29e39e198f1\",\n  \"amountTotal\": 1000,\n  \"status\": \"IN_PAYMENT\",\n  \"documentUrl\": \"https://storage.googleapis.com/download/storage/v1/b/cora_stage_exporter_bankslip_storage/o/boleto-e257d92a-fbcb-404b-9e83-bcd1af887ffb.pdf?generation=1650658115895756&alt=media\",\n  \"buyer\": {\n    \"name\": \"Gol Transportes Aereos Sa\",\n    \"document\": \"34052649000178\",\n    \"email\": \"email@email.com\",\n    \"type\": \"PJ\",\n    \"address\": {\n      \"street\": \"Rua Gomes de Carvalho\",\n      \"number\": \"1629\",\n      \"district\": \"Vila Olímpia\",\n      \"city\": \"São Paulo\",\n      \"state\": \"SP\",\n      \"complement\": \"N/A\",\n      \"zip_code\": \"00111222\"\n    }\n  },\n  \"seller\": {\n    \"businessId\": \"77677794-7d5c-4d5a-bb7e-a82a44e8d130\",\n    \"name\": \"Eva Inc\",\n    \"document\": \"10810830000138\",\n    \"type\": \"PJ\"\n  },\n  \"bankSlip\": {\n    \"barcode\": \"00199919700000010000000003202047000001826217\"\
+                    ,\n    \"digitable\": \"00190000090320204700900018262179991970000001000\",\n    \"registered\": true,\n    \"amountPaid\": 0,\n    \"url\": \"https://storage.googleapis.com/download/storage/v1/b/cora_stage_exporter_bankslip_storage/o/boleto-e257d92a-fbcb-404b-9e83-bcd1af887ffb.pdf?generation=1650658115895756&alt=media\",\n    \"fine\": 0,\n    \"interest\": 0,\n    \"documentSequence\": 18262,\n    \"interestMonthlyPercent\": 3.67,\n    \"finePercent\": 0,\n    \"fineValue\": 200,\n    \"discountPercent\": 1.5,\n    \"discountValue\": 0,\n    \"billType\": \"REGULAR\",\n    \"taxType\": null,\n    \"allowChangeAmount\": null,\n    \"minAmount\": null\n  },\n  \"pix\": null,\n  \"services\": [\n    {\n      \"name\": \"Nome Do Serviço\",\n      \"description\": \"Descrição do serviço\",\n      \"amount\": 1000\n    }\n  ],\n  \"paymentTerms\": {\n    \"dueDate\": \"2022-12-12\",\n    \"availableDate\": null,\n    \"interest\": {\n      \"value\": 367,\n      \"type\":\
+                    \ \"PERCENT\"\n    },\n    \"fine\": {\n      \"value\": 200,\n      \"type\": \"FIXED\",\n      \"startAt\": \"2022-12-13\"\n    },\n    \"discount\": {\n      \"value\": 150,\n      \"type\": \"PERCENT\",\n      \"dueDate\": null\n    }\n  },\n  \"payments\": [\n    {\n      \"id\": \"6999b623-a07c-45e7-a2b7-1e5272503b81\",\n      \"state\": \"IN_PROCESS\",\n      \"createdAt\": \"2022-04-22T20:15:07Z\",\n      \"finalizedAt\": null,\n      \"scheduleDate\": null,\n      \"amount\": 1000,\n      \"order\": 1,\n      \"interest\": 0,\n      \"fine\": 0\n    }\n  ],\n  \"paymentForms\": [\n    \"BANK_SLIP\"\n  ],\n  \"additionalInformation\": [],\n  \"createdAt\": \"2022-04-22T20:08:35Z\",\n  \"authenticationId\": \"6999b623-a07c-45e7-a2b7-1e5272503b81\",\n  \"notification\": {\n    \"id\": \"0a794510-1f15-461e-92b4-2a6e7d701cc8\",\n    \"channel\": \"EMAIL\",\n    \"destination\": {\n      \"name\": \"Fulano Ciclano Oliveira\",\n      \"contact\": \"email@email.com\"\
+                    \n    },\n    \"schedules\": [\n      {\n        \"rule\": \"NOTIFY_TEN_DAYS_AFTER_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-22\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_WHEN_PAID\",\n        \"status\": \"CREATED\",\n        \"scheduledTo\": null,\n        \"active\": true\n      },\n      {\n        \"rule\": \"NOTIFY_SEVEN_DAYS_AFTER_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-19\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_TWO_DAYS_AFTER_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-14\",\n        \"active\": true\n      },\n      {\n        \"rule\": \"NOTIFY_TEN_DAYS_BEFORE_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-02\",\n        \"active\": true\n      },\n      {\n        \"rule\": \"NOTIFY_FIFTEEN_DAYS_AFTER_DUE_DATE\",\n        \"status\"\
+                    : \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-27\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_ON_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-12\",\n        \"active\": true\n      },\n      {\n        \"rule\": \"NOTIFY_SEVEN_DAYS_BEFORE_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-05\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_FIFTEEN_DAYS_BEFORE_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-11-27\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_FIVE_DAYS_BEFORE_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-07\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_TWO_DAYS_BEFORE_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-10\",\n        \"active\": true\n  \
+                    \    },\n      {\n        \"rule\": \"NOTIFY_REMINDER_LATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-04-22\",\n        \"active\": false\n      },\n      {\n        \"rule\": \"NOTIFY_FIVE_DAYS_AFTER_DUE_DATE\",\n        \"status\": \"SCHEDULED\",\n        \"scheduledTo\": \"2022-12-17\",\n        \"active\": false\n      }\n    ]\n  },\n  \"taxInfo\": null,\n  \"recurrence\": null\n}"
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: d64a6b1c-52dc-4ee1-83f4-d29e39e198f1
+                  amountTotal:
+                    type: integer
+                    example: 1000
+                    default: 0
+                  status:
+                    type: string
+                    example: IN_PAYMENT
+                  documentUrl:
+                    type: string
+                    example: https://storage.googleapis.com/download/storage/v1/b/cora_stage_exporter_bankslip_storage/o/boleto-e257d92a-fbcb-404b-9e83-bcd1af887ffb.pdf?generation=1650658115895756&alt=media
+                  buyer:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Gol Transportes Aereos Sa
+                      document:
+                        type: string
+                        example: '34052649000178'
+                      email:
+                        type: string
+                        example: email@email.com
+                      type:
+                        type: string
+                        example: PJ
+                      address:
+                        type: object
+                        properties:
+                          street:
+                            type: string
+                            example: Rua Gomes de Carvalho
+                          number:
+                            type: string
+                            example: '1629'
+                          district:
+                            type: string
+                            example: Vila Olímpia
+                          city:
+                            type: string
+                            example: São Paulo
+                          state:
+                            type: string
+                            example: SP
+                          complement:
+                            type: string
+                            example: N/A
+                          zip_code:
+                            type: string
+                            example: '00111222'
+                  seller:
+                    type: object
+                    properties:
+                      businessId:
+                        type: string
+                        example: 77677794-7d5c-4d5a-bb7e-a82a44e8d130
+                      name:
+                        type: string
+                        example: Eva Inc
+                      document:
+                        type: string
+                        example: '10810830000138'
+                      type:
+                        type: string
+                        example: PJ
+                  bankSlip:
+                    type: object
+                    properties:
+                      barcode:
+                        type: string
+                        example: 00199919700000010000000003202047000001826217
+                      digitable:
+                        type: string
+                        example: 00190000090320204700900018262179991970000001000
+                      registered:
+                        type: boolean
+                        example: true
+                        default: true
+                      amountPaid:
+                        type: integer
+                        example: 0
+                        default: 0
+                      url:
+                        type: string
+                        example: https://storage.googleapis.com/download/storage/v1/b/cora_stage_exporter_bankslip_storage/o/boleto-e257d92a-fbcb-404b-9e83-bcd1af887ffb.pdf?generation=1650658115895756&alt=media
+                      fine:
+                        type: integer
+                        example: 0
+                        default: 0
+                      interest:
+                        type: integer
+                        example: 0
+                        default: 0
+                      documentSequence:
+                        type: integer
+                        example: 18262
+                        default: 0
+                      interestMonthlyPercent:
+                        type: number
+                        example: 3.67
+                        default: 0
+                      finePercent:
+                        type: integer
+                        example: 0
+                        default: 0
+                      fineValue:
+                        type: integer
+                        example: 200
+                        default: 0
+                      discountPercent:
+                        type: number
+                        example: 1.5
+                        default: 0
+                      discountValue:
+                        type: integer
+                        example: 0
+                        default: 0
+                      billType:
+                        type: string
+                        example: REGULAR
+                      taxType: {}
+                      allowChangeAmount: {}
+                      minAmount: {}
+                  pix: {}
+                  services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: Nome Do Serviço
+                        description:
+                          type: string
+                          example: Descrição do serviço
+                        amount:
+                          type: integer
+                          example: 1000
+                          default: 0
+                  paymentTerms:
+                    type: object
+                    properties:
+                      dueDate:
+                        type: string
+                        example: '2022-12-12'
+                      availableDate: {}
+                      interest:
+                        type: object
+                        properties:
+                          value:
+                            type: integer
+                            example: 367
+                            default: 0
+                          type:
+                            type: string
+                            example: PERCENT
+                      fine:
+                        type: object
+                        properties:
+                          value:
+                            type: integer
+                            example: 200
+                            default: 0
+                          type:
+                            type: string
+                            example: FIXED
+                          startAt:
+                            type: string
+                            example: '2022-12-13'
+                      discount:
+                        type: object
+                        properties:
+                          value:
+                            type: integer
+                            example: 150
+                            default: 0
+                          type:
+                            type: string
+                            example: PERCENT
+                          dueDate: {}
+                  payments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 6999b623-a07c-45e7-a2b7-1e5272503b81
+                        state:
+                          type: string
+                          example: IN_PROCESS
+                        createdAt:
+                          type: string
+                          example: '2022-04-22T20:15:07Z'
+                        finalizedAt: {}
+                        scheduleDate: {}
+                        amount:
+                          type: integer
+                          example: 1000
+                          default: 0
+                        order:
+                          type: integer
+                          example: 1
+                          default: 0
+                        interest:
+                          type: integer
+                          example: 0
+                          default: 0
+                        fine:
+                          type: integer
+                          example: 0
+                          default: 0
+                  paymentForms:
+                    type: array
+                    items:
+                      type: string
+                      example: BANK_SLIP
+                  additionalInformation:
+                    type: array
+                  createdAt:
+                    type: string
+                    example: '2022-04-22T20:08:35Z'
+                  authenticationId:
+                    type: string
+                    example: 6999b623-a07c-45e7-a2b7-1e5272503b81
+                  notification:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 0a794510-1f15-461e-92b4-2a6e7d701cc8
+                      channel:
+                        type: string
+                        example: EMAIL
+                      destination:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Fulano Ciclano Oliveira
+                          contact:
+                            type: string
+                            example: email@email.com
+                      schedules:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            rule:
+                              type: string
+                              example: NOTIFY_TEN_DAYS_AFTER_DUE_DATE
+                            status:
+                              type: string
+                              example: SCHEDULED
+                            scheduledTo:
+                              type: string
+                              example: '2022-12-22'
+                            active:
+                              type: boolean
+                              example: false
+                              default: true
+                  taxInfo: {}
+                  recurrence: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Idempotency-Key Required:
+                  value: "{\n    \"code\": \"invalid_request\",\n    \"message\": \"Request has invalid parameters\",\n    \"errors\": [\n        {\n            \"code\": \"Idempotency-Key\",\n            \"message\": \"header is required\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: invalid_request
+                  message:
+                    type: string
+                    example: Request has invalid parameters
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: Idempotency-Key
+                        message:
+                          type: string
+                          example: header is required
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Unauthorized:
+                  value: "{\n    \"error\": \"access_denied\"\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: access_denied
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: ''
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+x-provenance:
+  method: searched
+  source: https://developers.cora.com.br/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://developers.cora.com.br/reference/pagar-boleto-em-stage.md
+  merge:
+    pages: 1
+    deduped: 0
+    conflicts_kept_first: 0

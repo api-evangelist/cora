@@ -1,0 +1,31 @@
+generated: '2026-10-14'
+method: derived
+source: openapi/cora-base-openapi.yml, openapi/cora-boletos-openapi.yml, openapi/cora-boletos-v2-openapi.yml,
+  openapi/cora-dados-de-conta-openapi.yml, openapi/cora-extrato-openapi.yml, openapi/cora-nota-fiscal-de-servi-o-openapi.yml,
+  openapi/cora-notifica-es-openapi.yml, openapi/cora-pagamento-de-impostos-openapi.yml
+schemes:
+- name: sec0
+  source: openapi/cora-base-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-boletos-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-boletos-v2-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-dados-de-conta-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-extrato-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-nota-fiscal-de-servi-o-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-notifica-es-openapi.yml
+  flows: []
+- name: sec0
+  source: openapi/cora-pagamento-de-impostos-openapi.yml
+  flows: []
+scopes: []
