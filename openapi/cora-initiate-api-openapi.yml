@@ -1,0 +1,94 @@
+openapi: 3.2.0
+info:
+  title: pagamento-de-impostos Initiate API
+  version: '1.0'
+servers:
+- url: https://api.stage.cora.com.br/payments
+security:
+- sec0: []
+tags:
+- name: Initiate
+paths:
+  /initiate/{payment_id}:
+    delete:
+      summary: Cancelamento de pagamento
+      description: Cancele a iniciação de um pagamento previamente iniciado através de API
+      operationId: cancelamento-de-pagamento
+      parameters:
+      - name: payment_id
+        in: path
+        schema:
+          type: string
+          default: pay_2UydSaZKpUrOCUkaE2IWyV
+        required: true
+      - name: Idempotency-Key
+        in: header
+        required: true
+        schema:
+          type: string
+          default: d4f72104-66cd-4b1a-9a92-700b2e1d2c18
+      responses:
+        '204':
+          description: '204'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"code\": \"PAY-0006\",\n    \"message\": \"The payment is not initiated\"\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: PAY-0006
+                  message:
+                    type: string
+                    example: The payment is not initiated
+        '500':
+          description: '500'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"code\": \"internal_error\",\n    \"message\": \"An error has occurred and we're working to fix the problem!\"\n}"
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: internal_error
+                  message:
+                    type: string
+                    example: An error has occurred and we're working to fix the problem!
+      deprecated: false
+      tags:
+      - Initiate
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://developers.cora.com.br/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://developers.cora.com.br/reference/cancelamento-de-pagamento.md
+  - https://developers.cora.com.br/reference/lista-de-pagamentos.md
+  merge:
+    pages: 2
+    deduped: 1
+    conflicts_kept_first: 0

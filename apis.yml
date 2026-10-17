@@ -155,9 +155,11 @@ common:
 
 apis:
 - name: Cora API
-  description: 'Cora''s transactional banking API for Direct Integration: registered boleto and carnê (installment) issuance, Pix QR codes, account
-    data, balance and statement queries, payment and transfer initiation (DARF/GPS), webhook notification endpoints, and NFS-e municipal service
-    invoicing. Authenticated with mutual TLS (client certificate + private key) and OAuth2 client-credentials bearer tokens.'
+  description: >-
+    Cora's transactional banking API for Direct Integration: registered boleto and carnê (installment)
+    issuance, Pix QR codes, account data, balance and statement queries, payment and transfer initiation
+    (DARF/GPS), webhook notification endpoints, and NFS-e municipal service invoicing. Authenticated with
+    mutual TLS (client certificate + private key) and OAuth2 client-credentials bearer tokens.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
@@ -167,87 +169,146 @@ apis:
   - Boleto
   - Invoicing
   aid: cora:cora-api
-- aid: cora:cora-base
-  name: Cora Base Openapi.Yml API
-  description: The Base Openapi.Yml API from Cora — 1 operation(s) for base openapi.yml.
+- aid: cora:cora-balance-api
+  name: Cora Balance API
+  description: The Balance API from Cora — 1 operation(s) for balance.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Base Openapi.Yml
+  - Balance
   properties:
   - type: OpenAPI
-    url: openapi/cora-base-openapi.yml
-- aid: cora:cora-boletos
-  name: Cora Boletos Openapi.Yml API
-  description: The Boletos Openapi.Yml API from Cora — 1 operation(s) for boletos openapi.yml.
+    url: openapi/cora-balance-api-openapi.yml
+- aid: cora:cora-banks-api
+  name: Cora Banks API
+  description: The Banks API from Cora — 1 operation(s) for banks.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Boletos Openapi.Yml
+  - Banks
   properties:
   - type: OpenAPI
-    url: openapi/cora-boletos-openapi.yml
-- aid: cora:cora-boletos-v2
-  name: Cora Boletos V2 Openapi.Yml API
-  description: The Boletos V2 Openapi.Yml API from Cora — 4 operation(s) for boletos v2 openapi.yml.
+    url: openapi/cora-banks-api-openapi.yml
+- aid: cora:cora-boletos-v2-api
+  name: Cora Boletos V2 API
+  description: The Boletos V2 API from Cora — 3 operation(s) for boletos v2.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Boletos V2 Openapi.Yml
+  - Boletos V2
   properties:
   - type: OpenAPI
-    url: openapi/cora-boletos-v2-openapi.yml
-- aid: cora:cora-dados-de-conta
-  name: Cora Dados De Conta Openapi.Yml API
-  description: The Dados De Conta Openapi.Yml API from Cora — 2 operation(s) for dados de conta openapi.yml.
+    url: openapi/cora-boletos-v2-api-openapi.yml
+- aid: cora:cora-businesses-api
+  name: Cora Businesses API
+  description: The Businesses API from Cora — 3 operation(s) for businesses.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Dados De Conta Openapi.Yml
+  - Businesses
   properties:
   - type: OpenAPI
-    url: openapi/cora-dados-de-conta-openapi.yml
-- aid: cora:cora-extrato
-  name: Cora Extrato Openapi.Yml API
-  description: The Extrato Openapi.Yml API from Cora — 1 operation(s) for extrato openapi.yml.
+    url: openapi/cora-businesses-api-openapi.yml
+- aid: cora:cora-credentials-api
+  name: Cora Credentials API
+  description: The Credentials API from Cora — 1 operation(s) for credentials.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Extrato Openapi.Yml
+  - Credentials
   properties:
   - type: OpenAPI
-    url: openapi/cora-extrato-openapi.yml
-- aid: cora:cora-nota-fiscal-de-servi-o
-  name: Cora Nota Fiscal De Servi O Openapi.Yml API
-  description: The Nota Fiscal De Servi O Openapi.Yml API from Cora — 6 operation(s) for nota fiscal de servi o openapi.yml.
+    url: openapi/cora-credentials-api-openapi.yml
+- aid: cora:cora-dados-de-conta-api
+  name: Cora Dados De Conta API
+  description: The Dados De Conta API from Cora — 1 operation(s) for dados de conta.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Nota Fiscal De Servi O Openapi.Yml
+  - Dados De Conta
   properties:
   - type: OpenAPI
-    url: openapi/cora-nota-fiscal-de-servi-o-openapi.yml
-- aid: cora:cora-notifica-es
-  name: Cora Notifica Es Openapi.Yml API
-  description: The Notifica Es Openapi.Yml API from Cora — 1 operation(s) for notifica es openapi.yml.
+    url: openapi/cora-dados-de-conta-api-openapi.yml
+- aid: cora:cora-initiate-api
+  name: Cora Initiate API
+  description: The Initiate API from Cora — 1 operation(s) for initiate.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Notifica Es Openapi.Yml
+  - Initiate
   properties:
   - type: OpenAPI
-    url: openapi/cora-notifica-es-openapi.yml
-- aid: cora:cora-pagamento-de-impostos
-  name: Cora Pagamento De Impostos Openapi.Yml API
-  description: The Pagamento De Impostos Openapi.Yml API from Cora — 2 operation(s) for pagamento de impostos openapi.yml.
+    url: openapi/cora-initiate-api-openapi.yml
+- aid: cora:cora-issuer-api
+  name: Cora Issuer API
+  description: The Issuer API from Cora — 1 operation(s) for issuer.
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
-  - Pagamento De Impostos Openapi.Yml
+  - Issuer
   properties:
   - type: OpenAPI
-    url: openapi/cora-pagamento-de-impostos-openapi.yml
-
+    url: openapi/cora-issuer-api-openapi.yml
+- aid: cora:cora-notifica-es-api
+  name: Cora Notificações API
+  description: The Notificações API from Cora — 1 operation(s) for notificações.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Notificações
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-notifica-es-api-openapi.yml
+- aid: cora:cora-notifications-api
+  name: Cora Notifications API
+  description: The Notifications API from Cora — 1 operation(s) for notifications.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-notifications-api-openapi.yml
+- aid: cora:cora-pagamento-de-impostos-api
+  name: Cora Pagamento De Impostos API
+  description: The Pagamento De Impostos API from Cora — 1 operation(s) for pagamento de impostos.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Pagamento De Impostos
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-pagamento-de-impostos-api-openapi.yml
+- aid: cora:cora-pay-api
+  name: Cora Pay API
+  description: The Pay API from Cora — 1 operation(s) for pay.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Pay
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-pay-api-openapi.yml
+- aid: cora:cora-service-receipt-api
+  name: Cora Service Receipt API
+  description: The Service Receipt API from Cora — 1 operation(s) for service receipt.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Service Receipt
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-service-receipt-api-openapi.yml
+- aid: cora:cora-statement-api
+  name: Cora Statement API
+  description: The Statement API from Cora — 1 operation(s) for statement.
+  humanURL: https://developers.cora.com.br/
+  baseURL: https://matls-clients.api.cora.com.br
+  tags:
+  - Statement
+  properties:
+  - type: OpenAPI
+    url: openapi/cora-statement-api-openapi.yml
 x-enrichment:
   date: '2026-07-19'
   status: backfilled

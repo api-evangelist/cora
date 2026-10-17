@@ -1,0 +1,142 @@
+openapi: 3.2.0
+info:
+  title: nota-fiscal-de-serviço Businesses API
+  version: '1.0'
+servers:
+- url: https://api.stage.cora.com.br/fiscal-receipts
+security:
+- sec0: []
+tags:
+- name: Businesses
+paths:
+  /businesses/check-availability:
+    get:
+      summary: Consulta de disponibilidade de nota fiscal para o cliente
+      description: Verifique a disponibilidade da nota fiscal para determinado cliente Cora.
+      operationId: disponibilidade-da-nota-fiscal-por-cliente
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"isAvailable\": true\n}"
+              schema:
+                type: object
+                properties:
+                  isAvailable:
+                    type: boolean
+                    example: true
+                    default: true
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Businesses
+  /businesses/cnaes:
+    get:
+      summary: Consulta de CNAEs do cliente
+      description: Consulte uma lista dos CNAEs primário e secundários do cliente
+      operationId: consulta-de-cnae
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"main\": {\n        \"code\": \"6202300\",\n        \"description\": \"Desenvolvimento e licenciamento de programas de computador customizáveis\"\n    },\n    \"secondary\": [\n        {\n            \"code\": \"6201501\",\n            \"description\": \"Desenvolvimento de programas de computador sob encomenda\"\n        }\n    ]\n}"
+              schema:
+                type: object
+                properties:
+                  main:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: '6202300'
+                      description:
+                        type: string
+                        example: Desenvolvimento e licenciamento de programas de computador customizáveis
+                  secondary:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          example: '6201501'
+                        description:
+                          type: string
+                          example: Desenvolvimento de programas de computador sob encomenda
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Businesses
+  /businesses/service-codes:
+    get:
+      summary: Consulta de códigos de serviço por cliente
+      description: Esse recurso retorna a lista de códigos de serviço do cliente
+      operationId: consulta-de-codigo-de-servico
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "[\n    {\n       \"code\": \"17.02\" || \"170201\",\n       \"description\": \"Desenvolvimento de programas de computador sob encomenda\"\n    }\n]"
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Businesses
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://developers.cora.com.br/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://developers.cora.com.br/reference/cadastro-do-emissor-de-nota-fiscal.md
+  - https://developers.cora.com.br/reference/cancelamento-de-nfse.md
+  - https://developers.cora.com.br/reference/consulta-de-cnae.md
+  - https://developers.cora.com.br/reference/consulta-de-codigo-de-servico.md
+  - https://developers.cora.com.br/reference/disponibilidade-da-nota-fiscal-por-cliente.md
+  - https://developers.cora.com.br/reference/upload-certificado-a1-e-credenciais-nfse.md
+  merge:
+    pages: 6
+    deduped: 5
+    conflicts_kept_first: 0

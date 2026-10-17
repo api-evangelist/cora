@@ -1,0 +1,74 @@
+openapi: 3.2.0
+info:
+  title: dados-de-conta Dados De Conta API
+  version: '1.0'
+servers:
+- url: https://api.stage.cora.com.br/third-party/account
+security:
+- sec0: []
+tags:
+- name: Dados De Conta
+paths:
+  /:
+    get:
+      summary: Dados de Conta
+      description: Visualize os dados da conta que foi dada a autorização através desta API
+      operationId: dados-de-conta
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"agency\": \"0001\",\n  \"accountNumber\": \"1063135\",\n  \"accountDigit\": \"1\",\n  \"bankCode\": \"403\",\n  \"bankName\": \"Cora SCD\"\n}"
+              schema:
+                type: object
+                properties:
+                  agency:
+                    type: string
+                    example: '0001'
+                  accountNumber:
+                    type: string
+                    example: '1063135'
+                  accountDigit:
+                    type: string
+                    example: '1'
+                  bankCode:
+                    type: string
+                    example: '403'
+                  bankName:
+                    type: string
+                    example: Cora SCD
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Dados De Conta
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+x-readme-fauxas: true
+x-provenance:
+  method: searched
+  source: https://developers.cora.com.br/reference
+  harvested: '2026-10-14'
+  tool: harvest-readme-openapi.py
+  note: Assembled verbatim from the OpenAPI definition ReadMe embeds in each operation page of the provider's developer portal; paths and components merged by API title, nothing authored.
+  assembled_from:
+  - https://developers.cora.com.br/reference/dados-de-conta.md
+  - https://developers.cora.com.br/reference/saldo-de-conta.md
+  merge:
+    pages: 2
+    deduped: 1
+    conflicts_kept_first: 0
