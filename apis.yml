@@ -175,6 +175,8 @@ apis:
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
+  - Balances
+  tags_raw:
   - Balance
   properties:
   - type: OpenAPI
@@ -205,6 +207,8 @@ apis:
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
+  - Business
+  tags_raw:
   - Businesses
   properties:
   - type: OpenAPI
@@ -265,6 +269,8 @@ apis:
   humanURL: https://developers.cora.com.br/
   baseURL: https://matls-clients.api.cora.com.br
   tags:
+  - Notification
+  tags_raw:
   - Notifications
   properties:
   - type: OpenAPI
